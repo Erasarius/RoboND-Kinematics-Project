@@ -51,8 +51,11 @@ Links | alpha(i-1) | a(i-1) | d(i) | theta(i)
 6->EE | 0 | 0 | 0.303 | 0
 
 Note that...
+
 d1 = the Z delta from base to joint 2
+
 d4 = the Z delta from joint 3 to joint 5 (WC)
+
 d7 = the Z delta from joint 5 to end effector
 
 #### 3. Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.
@@ -60,6 +63,22 @@ d7 = the Z delta from joint 5 to end effector
 And here's where you can draw out and show your math for the derivation of your theta angles. 
 
 ![alt text][image2]
+
+Let's start by grabing some of the low hanging fruit.
+
+Theta1 = atan2(WCy, WCx), where WCy and WCx are the wrist center y and x coordinates, respectively.
+
+We can then find the side lengths of the ABC triange defined in the image.
+
+C = 1.25, which is the link length between joints 2 and 3 defined in the DH table.
+
+To find B, we can use the WC coordiates, but we need to take into account the X and Z offset of joint2, as defined by a2 and d1 in the DH table.
+
+B = sqrt( (sqrt(WCx^2 + WCy^2) - 0.35)^2 + (WCz^2 - 0.75)^2 )
+
+A is the lenth between joint3 and the wrist center (joint5).  This can be calculated as...
+
+A = sqrt( (0.96+0.54)^2 + (-0.054)^2 ) = 1.501
 
 ### Project Implementation
 
