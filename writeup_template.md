@@ -66,7 +66,7 @@ And here's where you can draw out and show your math for the derivation of your 
 
 Let's start by grabing some of the low hanging fruit.
 
-Theta1 = atan2(WCy, WCx), where WCy and WCx are the wrist center y and x coordinates, respectively.
+theta1 = atan2(WCy, WCx), where WCy and WCx are the wrist center y and x coordinates, respectively.
 
 We can then find the side lengths of the ABC triange defined in the image.
 
@@ -76,9 +76,18 @@ To find B, we can use the WC coordiates, but we need to take into account the X 
 
 B = sqrt( (sqrt(WCx^2 + WCy^2) - 0.35)^2 + (WCz^2 - 0.75)^2 )
 
-A is the lenth between joint3 and the wrist center (joint5).  This can be calculated as...
+A is the length between joint3 and the wrist center (joint5).  This can be calculated as...
 
 A = sqrt( (0.96+0.54)^2 + (-0.054)^2 ) = 1.501
+
+Knowing A, B, and C, we can then use the Law of Cosines to determine the angle for theta2.
+
+a = arccos( (B^2 + C^2 - A^2) / 2BC )
+b = arccos( (A^2 + C^2 - B^2) / 2AC )
+
+theta2 = pi/2 - a - atan2(WCz - d1, (sqrt(WCx^2 + WCy^2) - a1)), where d1 = 0.75 and a1 = 0.35
+theta3 = pi/2 - b !!! ideal result includes sag for joint4 !!!
+
 
 ### Project Implementation
 
