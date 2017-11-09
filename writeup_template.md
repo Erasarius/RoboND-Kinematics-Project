@@ -195,9 +195,9 @@ We can then find the side lengths of the ABC triange defined in the image.
 
 C = 1.25, which is the link length between joints 2 and 3 defined in the DH table.
 
-To find B, we can use the WC coordiates, but we need to take into account the X and Z offset of joint2, as defined by a2 and d1 in the DH table.
+To find B, we can use the WC coordinates, but we need to take into account the X and Z offset of joint2, as defined by a2 and d1 in the DH table.
 
-B = sqrt( (sqrt(WCx^2 + WCy^2) - 0.35)^2 + (WCz^2 - 0.75)^2 )
+B = sqrt( (sqrt(WCx^2 + WCy^2) - 0.35)^2 + (WCz - 0.75)^2 )
 
 A is the length between joint3 and the wrist center (joint5).  This can be calculated as...
 
